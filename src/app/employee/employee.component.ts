@@ -131,6 +131,7 @@ export class EmployeeComponent implements OnInit {
         await this.employeeService.delete(employee.empId).toPromise();
       }
       this.isAllSelected = false;
+      this.selectedEmployees = [];
       this.getEmployees();
       const closeBtn = document.getElementById('closeDeleteModal');
       if (closeBtn) closeBtn.click();
