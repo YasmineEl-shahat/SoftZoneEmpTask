@@ -19,13 +19,7 @@ export class EmployeeComponent implements OnInit {
   isAllSelected: boolean = false;
   selectedEmployeeToEdit: EditEmpViewModel | any;
   selectedEmployeeToDelete: EditEmpViewModel | any = null;
-  displayedColumns: string[] = [
-    'select',
-    'empName',
-    'empEmail',
-    'empAddress',
-    'empPhone',
-  ];
+  selectedEmployees: EditEmpViewModel[] = [];
 
   constructor(private employeeService: EmployeeService) {}
 
@@ -68,12 +62,34 @@ export class EmployeeComponent implements OnInit {
     this.currentPage = page;
   }
 
+  toggleSelected(employee: EditEmpViewModel) {
+    if (
+      employee.selected &&
+      !this.selectedEmployees.some((obj) => obj.empId === employee.empId)
+    )
+      this.selectedEmployees.push(employee);
+    else if (
+      !employee.selected &&
+      this.selectedEmployees.some((obj) => obj.empId === employee.empId)
+    ) {
+      this.selectedEmployees = this.selectedEmployees.filter(
+        (emp) => emp.empId !== employee.empId
+      );
+    }
+  }
+  selectEmployee(employee: EditEmpViewModel): void {
+    if (employee.selected) employee.selected = false;
+    else employee.selected = true;
+    this.toggleSelected(employee);
+  }
+
   selectAll(): void {
     const startIndex = this.currentPage * this.pageSize;
     const endIndex = startIndex + this.pageSize;
 
     for (let i = startIndex; i < endIndex && i < this.employees.length; i++) {
       this.employees[i].selected = true;
+      this.toggleSelected(this.employees[i]);
     }
   }
 
@@ -83,6 +99,7 @@ export class EmployeeComponent implements OnInit {
 
     for (let i = startIndex; i < endIndex && i < this.employees.length; i++) {
       this.employees[i].selected = false;
+      this.toggleSelected(this.employees[i]);
     }
   }
 
@@ -101,16 +118,16 @@ export class EmployeeComponent implements OnInit {
   }
 
   async deleteSelected() {
-    const selectedEmployees = this.employees.filter(
-      (employee: EditEmpViewModel) => employee.selected
-    );
+    // this.selectedEmployees = this.employees.filter(
+    //   (employee: EditEmpViewModel) => employee.selected
+    // );
 
-    if (selectedEmployees.length === 0) {
+    if (this.selectedEmployees.length === 0) {
       return;
     }
 
     try {
-      for (const employee of selectedEmployees) {
+      for (const employee of this.selectedEmployees) {
         await this.employeeService.delete(employee.empId).toPromise();
       }
       this.isAllSelected = false;
