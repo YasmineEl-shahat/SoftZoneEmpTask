@@ -1,0 +1,91 @@
+<div class="modal" id="addEmployeeModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Employee</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="empName">Name:</label>
+          <input
+            type="text"
+            id="empName"
+            formControlName="empName"
+            [class.is-invalid]="isInValidAndTouched('empName')"
+            [class.is-valid]="isValidControl('empName')"
+            required
+          />
+          <div class="invalid-feedback">
+            <div *ngIf="isControlHasError('empName', 'required')">
+              Name is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="empEmail">Email:</label>
+          <input
+            type="text"
+            id="empEmail"
+            formControlName="empEmail"
+            [class.is-invalid]="isInValidAndTouched('empEmail')"
+            [class.is-valid]="isValidControl('empEmail')"
+            required
+          />
+          <div class="invalid-feedback">
+            <div *ngIf="isControlHasError('empEmail', 'required')">
+              Email is required.
+            </div>
+            <div *ngIf="isControlHasError('empEmail', 'email')">
+              Invalid email format.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="empPhone">Phone:</label>
+          <input
+            type="text"
+            id="empPhone"
+            formControlName="empPhone"
+            [class.is-invalid]="isInValidAndTouched('empPhone')"
+            [class.is-valid]="isValidControl('empPhone')"
+            required
+          />
+          <div class="invalid-feedback">
+            <div *ngIf="isControlHasError('empPhone', 'required')">
+              Phone is required.
+            </div>
+            <div *ngIf="isControlHasError('empPhone', 'pattern')">
+              Phone should be 11 numbers only and start with 011, 012, or 010.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="empAddress">Address:</label>
+          <input
+            type="text"
+            id="empAddress"
+            formControlName="empAddress"
+            [class.is-invalid]="isInValidAndTouched('empAddress')"
+            [class.is-valid]="isValidControl('empAddress')"
+            required
+          />
+          <div class="invalid-feedback">
+            <div *ngIf="isControlHasError('empAddress', 'required')">
+              Address is required.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <span data-bs-dismiss="modal" id="closeModal">Cancel</span>
+          <button type="submit" class="btn btn-success">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+.employee-container {
+  position: relative;
+
+  header {
+    background-color: rgba(0, 45, 79, 0.835);
+    padding: 1.5rem;
+    .delete-selected {
+      margin-right: 1rem;
+    }
+    @media screen and (max-width: 420px) {
+      .delete-selected {
+        margin: 1rem 0px;
+      }
+      button {
+        width: 100%;
+      }
+    }
+  }
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .loading {
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .employee-table {
+    @media screen and (max-width: 667px) {
+      overflow-x: scroll;
+    }
+
+    width: 97vw;
+    border-collapse: collapse;
+    margin: 1.5rem;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    cursor: pointer;
+    padding: 10px;
+    text-align: left;
+  }
+
+  th:hover {
+    background-color: #e6e6e6;
+  }
+
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,48 @@
+.modal-content {
+  border: none;
+}
+.modal-dialog {
+  width: 25vw;
+  min-width: 300px;
+  background-color: #fff;
+
+  .form-group {
+    margin-bottom: 20px;
+    padding: 0 1.5rem;
+  }
+
+  label,
+  .modal-title {
+    color: rgba(0, 45, 79, 0.835);
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  form {
+    padding-top: 1.5rem;
+  }
+  .modal-footer {
+    margin-top: 2rem;
+    background: rgb(239, 233, 233);
+    border-radius: 0;
+    span {
+      cursor: pointer;
+      color: rgb(94, 89, 89);
+    }
+    button[type="submit"] {
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 0px;
+      cursor: pointer;
+    }
+  }
+}
+
+.modal-title {
+  margin-bottom: 10px;
+}
