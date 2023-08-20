@@ -1,4 +1,14 @@
 .employee-container {
+  .table-wrapper {
+    min-width: 1000px !important;
+  }
+  .table-responsive {
+    overflow-x: hidden !important;
+
+    @media screen and (max-width: 667px) {
+      overflow-x: scroll !important;
+    }
+  }
   header {
     background-color: rgba(0, 45, 79, 0.835);
     padding: 1.5rem;
@@ -56,19 +66,3 @@
     justify-content: center;
   }
 }
-// .mat-mdc-paginator {
-//   background: none;
-//   color: black;
-// }
-
-// .table-wrapper {
-//   min-width: 1000px;
-//   background-color: red;
-// }
-// .table-responsive {
-//   overflow-x: hidden !important;
-
-//   @media screen and (max-width: 667px) {
-//     overflow-x: scroll !important;
-//   }
-// }
