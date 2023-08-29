@@ -48,11 +48,11 @@ export class EmployeeComponent implements OnInit {
 
     this.employees.sort((a: any, b: any) => {
       if (this.sortOrder === 'asc') {
-        if (a[column][0] < b[column][0]) return -1;
-        if (a[column][0] > b[column][0]) return 1;
+        if (a[column][0].toLowerCase() < b[column][0].toLowerCase()) return -1;
+        if (a[column][0].toLowerCase() > b[column][0].toLowerCase()) return 1;
       } else {
-        if (a[column][0] > b[column][0]) return -1;
-        if (a[column][0] < b[column][0]) return 1;
+        if (a[column][0].toLowerCase() > b[column][0].toLowerCase()) return -1;
+        if (a[column][0].toLowerCase() < b[column][0].toLowerCase()) return 1;
       }
       return 0;
     });
@@ -118,10 +118,6 @@ export class EmployeeComponent implements OnInit {
   }
 
   async deleteSelected() {
-    // this.selectedEmployees = this.employees.filter(
-    //   (employee: EditEmpViewModel) => employee.selected
-    // );
-
     if (this.selectedEmployees.length === 0) {
       return;
     }

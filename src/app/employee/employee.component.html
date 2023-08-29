@@ -133,18 +133,18 @@
           id="closeDeleteModal"
           (click)="selectedEmployeeToDelete = null"
         >
-          Close
+          Cancel
         </button>
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-danger"
           (click)="
             selectedEmployeeToDelete
               ? deleteEmployee(selectedEmployeeToDelete.empId)
               : deleteSelected()
           "
         >
-          Save changes
+          Delete
         </button>
       </div>
     </div>
